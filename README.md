@@ -24,11 +24,15 @@ npm run docs:preview  # 预览构建产物
 
 推送到 `main` 分支即触发 GitHub Actions，构建并部署到 GitHub Pages（`actions/deploy-pages`）。
 
-> ⚠️ 需在仓库 `Settings → Pages` 中将 **Source** 设为 **GitHub Actions**。
+> ⚠️ 需在仓库 `Settings → Pages` 中将 **Source** 设为 **GitHub Actions**，并在 **Custom domain** 填入 `www.swisscea.com`。
 
-### 站点路径（base）
+### 路径约定（换域名不失效）
 
-当前 `docs/.vitepress/config.mts` 中 `base: '/swisscea.com/'`，对应项目 Pages 地址 `https://<owner>.github.io/swisscea.com/`。若改用自定义域名（如 `swisscea.com`），把 `base` 改为 `'/'` 并重新提交即可。
+- `base` 为默认 `/`（自定义域名根路径）。
+- Markdown 文章内链接用**相对地址**（`about`、`news/218`…）。
+- 图片用 `/img/…`（VitePress public 资源约定，跟随域名自动解析），由 VitePress 自动处理。
+
+因此无论部署到 `www.swisscea.com` 还是任意域名/子路径，都无需改动内容。
 
 ## 资产来源
 

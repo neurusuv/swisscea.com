@@ -2,7 +2,6 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  base: '/swisscea.com/',
   title: '瑞士中国商会',
   description:
     '瑞士中国商会（Swiss Chinese Enterprises Association）是根据瑞士法律成立的自愿非营利组织，搭建中瑞企业经贸合作的桥梁平台。',
