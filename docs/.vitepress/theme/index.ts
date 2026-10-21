@@ -6,3 +6,4 @@ export default {
   extends: DefaultTheme,
   Layout,
 }
+import './join.css'

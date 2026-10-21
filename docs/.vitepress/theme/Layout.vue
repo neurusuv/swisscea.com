@@ -6,6 +6,7 @@ const { frontmatter, title } = useData()
 const route = useRoute()
 
 const isHome = computed(() => frontmatter.value.layout === 'home')
+const isJoin = computed(() => route.path === '/join' || route.path === '/join.html')
 
 const nav = [
   { label: '首页', path: '/' },
@@ -62,7 +63,7 @@ watch(
             :class="{ 'is-active': isActive(item.path) }"
             :href="href(item.path)"
           >{{ item.label }}</a>
-          <a class="sc-links__cta" :href="href('/contact')">加入我们</a>
+          <a class="sc-links__cta" :href="href('/join')">加入我们</a>
         </nav>
 
         <button
@@ -83,13 +84,13 @@ watch(
             :class="{ 'is-active': isActive(item.path) }"
             :href="href(item.path)"
           >{{ item.label }}</a>
-          <a class="sc-drawer__cta" :href="href('/contact')">加入我们</a>
+          <a class="sc-drawer__cta" :href="href('/join')">加入我们</a>
         </nav>
       </transition>
     </header>
 
     <main class="sc-main">
-      <Content v-if="!isHome" class="sc-page" />
+      <Content v-if="!isHome" class="sc-page" :class="{ 'sc-page--join': isJoin }" />
       <Content v-else class="sc-home" />
     </main>
 
@@ -107,6 +108,7 @@ watch(
           <a :href="href('/about')">关于我们</a>
           <a :href="href('/members')">会员企业</a>
           <a :href="href('/contact')">联系我们</a>
+          <a :href="href('/join')">加入商会</a>
           <a :href="href('/news/')">协会新闻</a>
         </nav>
 

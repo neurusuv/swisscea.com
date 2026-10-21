@@ -21,11 +21,10 @@ title: 联系我们
   </div>
 </div>
 
-
-## 加入商会 · Mitglied werden
-
-欢迎有意加入瑞士中国商会的企业和机构下载中德双语入会申请表，按申请表要求填写并准备附件。
-
-**[下载瑞士中国商会入会申请表（PDF） / Antrag auf SCEA-Mitgliedschaft](/files/SCEA-Mitgliedschaftsantrag.pdf)**
-
-如需咨询入会事宜，请联系 [ban.wang@swisscea.com](mailto:ban.wang@swisscea.com)。
+<div class="contact-join-prompt">
+  <div>
+    <strong>有意加入瑞士中国商会？</strong>
+    <p>了解会员类别、申请流程与会费标准。</p>
+  </div>
+  <a href="/join">前往入会申请页面 <span aria-hidden="true">↗</span></a>
+</div>
