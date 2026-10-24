@@ -38,7 +38,7 @@ else:
     node=soup.select_one("#js_content")
     title_node=soup.select_one("#activity-name") or soup.select_one("h1.rich_media_title")
     title=title_node.get_text(" ",strip=True) if title_node else ""
-    if not node or len(node.get_text(" ",strip=True))<180 or not title:
+    if not node or len(node.get_text(" ",strip=True))<80 or not title or any(z in node.get_text(" ",strip=True)[:250] for z in ["环境异常","验证","请在微信客户端打开"]):
         raise RuntimeError("WeChat returned a challenge or an incomplete article; nothing published.")
     for bad in node.select("script,style,noscript,iframe"):
         bad.decompose()
@@ -66,7 +66,7 @@ else:
             tag.attrs.pop(attr,None)
     content=markdownify(str(node),heading_style="ATX").strip()
     content=re.sub(r"\n{3,}","\n\n",content)
-if len(content)<300:
+if len(content)<120:
     raise RuntimeError("Article content too short; nothing published.")
 title=re.sub(r"\s+"," ",h.unescape(title)).strip()
 if len(title)>160:
