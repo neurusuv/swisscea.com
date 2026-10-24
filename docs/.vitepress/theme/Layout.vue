@@ -7,6 +7,7 @@ const route = useRoute()
 
 const isHome = computed(() => frontmatter.value.layout === 'home')
 const isJoin = computed(() => route.path === '/join' || route.path === '/join.html')
+const isNewsArticle = computed(() => /^\/news\/[^/]+(?:\.html)?$/.test(route.path))
 
 const nav = [
   { label: '首页', path: '/' },
@@ -90,7 +91,11 @@ watch(
     </header>
 
     <main class="sc-main">
-      <Content v-if="!isHome" class="sc-page" :class="{ 'sc-page--join': isJoin }" />
+      <Content
+        v-if="!isHome"
+        class="sc-page"
+        :class="{ 'sc-page--join': isJoin, 'sc-page--news': isNewsArticle }"
+      />
       <Content v-else class="sc-home" />
     </main>
 

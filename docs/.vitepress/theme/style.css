@@ -987,66 +987,32 @@ img {
 }
 
 
-/* News articles: Content itself is .sc-page.vp-doc, not a nested .vp-doc. */
-.sc-page.vp-doc:has(.post-date) {
+/* News detail pages are marked explicitly in Layout.vue. */
+.sc-page--news {
   max-width: 850px;
 }
-.sc-page.vp-doc:has(.post-date) > p:not(:has(.post-date)) {
-  margin: 0 0 1.65em;
-  font-size: 16.5px;
-  line-height: 2;
-  text-align: justify;
-  text-align-last: left;
-  overflow-wrap: break-word;
-}
-.sc-page.vp-doc:has(.post-date) > .post-date {
-  display: block;
-  margin: 10px 0 36px;
-}
-.sc-page.vp-doc:has(.post-date) h1 {
-  font-size: clamp(28px, 3.2vw, 40px);
-  line-height: 1.42;
-}
-.sc-page.vp-doc:has(.post-date) h2,
-.sc-page.vp-doc:has(.post-date) h3 {
-  clear: both;
-  margin: 2.1em 0 0.9em;
-}
-.sc-page.vp-doc:has(.post-date) table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
-  margin: 1.4em 0 2em;
-}
-.sc-page.vp-doc:has(.post-date) ul,
-.sc-page.vp-doc:has(.post-date) ol {
-  margin: 0.8em 0 1.7em;
-}
-@media (max-width: 720px) {
-  .sc-page.vp-doc:has(.post-date) > p:not(:has(.post-date)) {
-    margin-bottom: 1.5em;
-    line-height: 1.95;
-  }
-}
-
-
-/* News rendering: match the page root regardless of VitePress Content nesting. */
-.sc-page:has(.post-date) p {
+.sc-page--news p {
   display: block;
   margin-top: 0 !important;
   margin-bottom: 28px !important;
+  font-size: 16.5px;
   line-height: 2 !important;
   text-align: justify;
   text-align-last: left;
   overflow-wrap: anywhere;
 }
-.sc-page:has(.post-date) p + p { margin-top: 8px !important; }
-.sc-page:has(.post-date) > time.post-date,
-.sc-page:has(.post-date) time.post-date {
-  display: block;
-  margin-bottom: 38px !important;
+.sc-page--news .post-meta {
+  margin: 10px 0 38px !important;
 }
-.sc-page:has(.post-date) h2 {
+.sc-page--news .post-date {
+  display: block;
+  margin: 0;
+}
+.sc-page--news h1 {
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.42;
+}
+.sc-page--news h2 {
   display: block;
   margin: 48px 0 18px !important;
   padding: 0 0 10px;
@@ -1054,6 +1020,52 @@ img {
   font-size: 23px;
   line-height: 1.5;
 }
-.sc-page:has(.post-date) h3 { display: block; margin: 34px 0 14px !important; }
-.sc-page:has(.post-date) table { margin: 22px 0 28px !important; }
-.sc-page:has(.post-date) li { margin-bottom: 10px; }
+.sc-page--news h3 {
+  display: block;
+  margin: 34px 0 14px !important;
+}
+.sc-page--news table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 22px 0 28px !important;
+}
+.sc-page--news ul,
+.sc-page--news ol {
+  margin: 12px 0 28px;
+}
+.sc-page--news li {
+  margin-bottom: 10px;
+}
+.sc-page--news .news-media {
+  margin: 32px 0;
+}
+.sc-page--news .news-media img,
+.sc-page--news .news-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.sc-page--news .news-media figcaption {
+  margin-top: 12px;
+  color: var(--sc-muted);
+  font-size: 14.5px;
+  line-height: 1.7;
+  text-align: center;
+}
+.sc-page--news .news-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+@media (max-width: 720px) {
+  .sc-page--news p {
+    margin-bottom: 24px !important;
+    line-height: 1.95 !important;
+  }
+  .sc-page--news .news-gallery {
+    grid-template-columns: 1fr;
+  }
+}
