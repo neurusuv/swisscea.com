@@ -6,6 +6,7 @@ title: 协会新闻
 
 <div class="news-list">
 <ul>
+<li class="news-item"><a href="wechat-IlMKpY0BNJIjGoopPhpzjw"><span class="news-title">日内瓦分会举办理事会“重启商务季”活动</span><span class="news-date">2026 年 9 月 2 日</span></a></li>
 <li class="news-item"><a href="218"><span class="news-title">瑞士中国商会倡议书 ——组织会员单位和中瑞企业参加第三届中国国际供应链促进博览会（CISCE）</span><span class="news-date">2025 年 4 月 7 日</span></a></li>
 <li class="news-item"><a href="182"><span class="news-title">瑞士中国商会日内瓦分会协助黑龙江省梁惠玲省长团组在瑞士开展招商引资等活动</span><span class="news-date">2024 年 10 月 5 日</span></a></li>
 <li class="news-item"><a href="115"><span class="news-title">瑞士中国商会日内瓦分会与吉林省商务厅代表团举办座谈会</span><span class="news-date">2024 年 10 月 1 日</span></a></li>
