@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '.github/workflows/import-wechat-news.yml'
+      - 'scripts/import_wechat_scea.py'
 
 permissions:
   contents: write
@@ -25,7 +26,12 @@ jobs:
           python-version: '3.11'
       - run: pip install curl_cffi beautifulsoup4 markdownify
       - name: Import verified article and images
-        run: python scripts/import_wechat_scea.py
+        run: |
+          for id in ReCTABiBXdbQDZC6mWKOPA 50c6GUBVRx6bDdeUZLUaaA Q1L2WNb1-FmjJ_CWTjOYag h-CflFn99j02aBIkcxmU3A Xv1zeiFEwrP3sXA-QhzSSQ a47emtSHVtRsc73vNGpaUg otDYKK8HWYYK0Qk_nV0oIw hb4rrgIqFTOCNhKJfQ6hVQ; do
+            echo "::group::Import $id"
+            python scripts/import_wechat_scea.py "$id" || echo "::warning::Failed to import $id"
+            echo "::endgroup::"
+          done
       - name: Commit verified article
         run: |
           git config user.name "github-actions[bot]"
