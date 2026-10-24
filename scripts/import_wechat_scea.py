@@ -6,9 +6,9 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify
 from curl_cffi import requests
 
-URL = "https://mp.weixin.qq.com/s/IlMKpY0BNJIjGoopPhpzjw"
+URL = "https://mp.weixin.qq.com/s/" + sys.argv[1] if len(sys.argv)>1 else "https://mp.weixin.qq.com/s/IlMKpY0BNJIjGoopPhpzjw"
 ROOT=pathlib.Path("docs")
-ID="wechat-IlMKpY0BNJIjGoopPhpzjw"
+ID="wechat-"+URL.split("/s/")[-1].split("?")[0]
 HEADERS={"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36","Referer":"https://mp.weixin.qq.com/"}
 s=requests.Session(impersonate="chrome")
 def fetch(url):
