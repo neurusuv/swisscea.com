@@ -18,6 +18,8 @@ title: 协会新闻
 <li class="news-item"><a href="wechat-5J8p-6znb61jHxLBmz7b0A"><span class="news-title">瑞士中国商会第三次亮相日内瓦登城节</span><span class="news-date">2025 年 12 月 16 日</span></a></li>
 <li class="news-item"><a href="wechat-fm7CHl6ORw3wNYMNcZ_Ayg"><span class="news-title">商会出席中瑞经贸合作推介会及第四届链博会瑞士推介会</span><span class="news-date">2025 年 12 月 6 日</span></a></li>
 <li class="news-item"><a href="wechat-QypoIM36DBQCuWmTiXqpTg"><span class="news-title">瑞士中国商会赴瓦团拜会陈旭大使</span><span class="news-date">2025 年 11 月 19 日</span></a></li>
+<li class="news-item"><a href="futian-entrepreneurs-salon-2025"><span class="news-title">福田区代表团在瑞士成功举办企业家沙龙推动双方在创新与产业合作领域深化对接</span><span class="news-date">2025 年 11 月 7 日</span></a></li>
+<li class="news-item"><a href="shanxi-commerce-delegation-2025"><span class="news-title">瑞士中国商会接待山西省商务厅代表团</span><span class="news-date">2025 年 11 月 4 日</span></a></li>
 <li class="news-item"><a href="wechat-dQmi3ODmsWdl-pr3pkIBCQ"><span class="news-title">《China Daily》聚焦瑞士中国商会：在中瑞建交75周年之际深化合作</span><span class="news-date">2025 年 10 月 1 日</span></a></li>
 <li class="news-item"><a href="wechat-HNo6C50TWYF6C88pUSP3og"><span class="news-title">中国（长沙）-瑞士（日内瓦）经贸交流活动成功举办</span><span class="news-date">2025 年 9 月 20 日</span></a></li>
 <li class="news-item"><a href="wechat-4QMdMDQLc7lZGTUylRaXKA"><span class="news-title">瑞士中国商会参加联合国全球发展倡议主题研讨会</span><span class="news-date">2025 年 6 月 30 日</span></a></li>
