@@ -1028,3 +1028,32 @@ img {
     line-height: 1.95;
   }
 }
+
+
+/* News rendering: match the page root regardless of VitePress Content nesting. */
+.sc-page:has(.post-date) p {
+  display: block;
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  line-height: 2 !important;
+  text-align: justify;
+  text-align-last: left;
+  overflow-wrap: anywhere;
+}
+.sc-page:has(.post-date) p + p { margin-top: 8px !important; }
+.sc-page:has(.post-date) > time.post-date,
+.sc-page:has(.post-date) time.post-date {
+  display: block;
+  margin-bottom: 38px !important;
+}
+.sc-page:has(.post-date) h2 {
+  display: block;
+  margin: 48px 0 18px !important;
+  padding: 0 0 10px;
+  border-bottom: 1px solid rgba(184,14,30,.18);
+  font-size: 23px;
+  line-height: 1.5;
+}
+.sc-page:has(.post-date) h3 { display: block; margin: 34px 0 14px !important; }
+.sc-page:has(.post-date) table { margin: 22px 0 28px !important; }
+.sc-page:has(.post-date) li { margin-bottom: 10px; }
