@@ -985,3 +985,45 @@ img {
     letter-spacing: 1px;
   }
 }
+
+
+/* News editorial layout: clear separation between paragraphs */
+.sc-page:has(.post-date) .vp-doc {
+  max-width: 780px;
+  margin-inline: auto;
+}
+.sc-page:has(.post-date) .vp-doc > p:not(:has(.post-date)),
+.sc-page:has(.post-date) .vp-doc > blockquote {
+  margin-top: 0;
+  margin-bottom: 1.55em;
+  font-size: 16.5px;
+  line-height: 2;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  text-align-last: left;
+  overflow-wrap: break-word;
+}
+.sc-page:has(.post-date) .vp-doc > p:has(.post-date) {
+  margin-bottom: 2em;
+}
+.sc-page:has(.post-date) .vp-doc h1 {
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.42;
+}
+.sc-page:has(.post-date) .vp-doc h2,
+.sc-page:has(.post-date) .vp-doc h3 {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+}
+.sc-page:has(.post-date) .vp-doc table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.4em 0 2em;
+}
+@media (max-width: 720px) {
+  .sc-page:has(.post-date) .vp-doc > p:not(:has(.post-date)) {
+    margin-bottom: 1.35em;
+    line-height: 1.95;
+  }
+}
