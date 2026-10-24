@@ -987,43 +987,44 @@ img {
 }
 
 
-/* News editorial layout: clear separation between paragraphs */
-.sc-page:has(.post-date) .vp-doc {
-  max-width: 780px;
-  margin-inline: auto;
+/* News articles: Content itself is .sc-page.vp-doc, not a nested .vp-doc. */
+.sc-page.vp-doc:has(.post-date) {
+  max-width: 850px;
 }
-.sc-page:has(.post-date) .vp-doc > p:not(:has(.post-date)),
-.sc-page:has(.post-date) .vp-doc > blockquote {
-  margin-top: 0;
-  margin-bottom: 1.55em;
+.sc-page.vp-doc:has(.post-date) > p:not(:has(.post-date)) {
+  margin: 0 0 1.65em;
   font-size: 16.5px;
   line-height: 2;
   text-align: justify;
-  text-justify: inter-ideograph;
   text-align-last: left;
   overflow-wrap: break-word;
 }
-.sc-page:has(.post-date) .vp-doc > p:has(.post-date) {
-  margin-bottom: 2em;
+.sc-page.vp-doc:has(.post-date) > .post-date {
+  display: block;
+  margin: 10px 0 36px;
 }
-.sc-page:has(.post-date) .vp-doc h1 {
+.sc-page.vp-doc:has(.post-date) h1 {
   font-size: clamp(28px, 3.2vw, 40px);
   line-height: 1.42;
 }
-.sc-page:has(.post-date) .vp-doc h2,
-.sc-page:has(.post-date) .vp-doc h3 {
-  margin-top: 2em;
-  margin-bottom: 0.8em;
+.sc-page.vp-doc:has(.post-date) h2,
+.sc-page.vp-doc:has(.post-date) h3 {
+  clear: both;
+  margin: 2.1em 0 0.9em;
 }
-.sc-page:has(.post-date) .vp-doc table {
+.sc-page.vp-doc:has(.post-date) table {
   display: block;
   max-width: 100%;
   overflow-x: auto;
   margin: 1.4em 0 2em;
 }
+.sc-page.vp-doc:has(.post-date) ul,
+.sc-page.vp-doc:has(.post-date) ol {
+  margin: 0.8em 0 1.7em;
+}
 @media (max-width: 720px) {
-  .sc-page:has(.post-date) .vp-doc > p:not(:has(.post-date)) {
-    margin-bottom: 1.35em;
+  .sc-page.vp-doc:has(.post-date) > p:not(:has(.post-date)) {
+    margin-bottom: 1.5em;
     line-height: 1.95;
   }
 }
