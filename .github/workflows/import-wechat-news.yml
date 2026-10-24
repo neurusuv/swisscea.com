@@ -27,7 +27,7 @@ jobs:
       - run: pip install curl_cffi beautifulsoup4 markdownify
       - name: Import verified article and images
         run: |
-          for id in ReCTABiBXdbQDZC6mWKOPA 50c6GUBVRx6bDdeUZLUaaA Q1L2WNb1-FmjJ_CWTjOYag h-CflFn99j02aBIkcxmU3A Xv1zeiFEwrP3sXA-QhzSSQ a47emtSHVtRsc73vNGpaUg otDYKK8HWYYK0Qk_nV0oIw hb4rrgIqFTOCNhKJfQ6hVQ; do
+          for id in 5J8p-6znb61jHxLBmz7b0A fm7CHl6ORw3wNYMNcZ_Ayg QypoIM36DBQCuWmTiXqpTg e3npbqgs5BCMOkZZIjmigg LvKormowe477w7NEHUFACg dQmi3ODmsWdl-pr3pkIBCQ HNo6C50TWYF6C88pUSP3og 4QMdMDQLc7lZGTUylRaXKA AOiRlCwijlBB_r7Ukzbdtg 2U3dN5kiRFOhBL0A8Snahg tsbt9deBmvPD0tppWWLX3Q 63GFfdmbAQV1PhKYatLJQw 6n5-j1Smjq-Be8AqxoEL0w rL1C936RVRPGpfvhv4kW_Q 02B51UhV4m_A3US2oaZXqA npKX_K9bnpmRmzFgl6lErw Tu0-vexI_g_ojuuBRgABxQ VG-C_Z2I9yoYS4JPtXKBQQ; do
             echo "::group::Import $id"
             python scripts/import_wechat_scea.py "$id" || echo "::warning::Failed to import $id"
             echo "::endgroup::"
