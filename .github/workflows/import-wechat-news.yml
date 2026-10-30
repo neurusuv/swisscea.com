@@ -2,53 +2,78 @@ name: Import WeChat article to SCEA news
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/import-wechat-news.yml'
-      - 'scripts/import_wechat_scea.py'
+    inputs:
+      article_ids:
+        description: 'WeChat short IDs or mp.weixin.qq.com/s/ URLs, separated by spaces or newlines'
+        required: true
+        type: string
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 jobs:
-  import-and-deploy:
+  import:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install curl_cffi beautifulsoup4 markdownify
-      - name: Import verified article and images
+      - name: Check requested articles before installing dependencies
+        id: plan
+        env:
+          ARTICLE_IDS: ${{ inputs.article_ids }}
+        run: python scripts/import_wechat_batch.py --plan
+      - name: Install importer dependencies
+        if: steps.plan.outputs.pending != '0'
+        run: pip install curl_cffi beautifulsoup4 markdownify
+      - name: Import complete articles in isolation
+        if: steps.plan.outputs.pending != '0'
+        env:
+          ARTICLE_IDS: ${{ inputs.article_ids }}
+        run: python scripts/import_wechat_batch.py
+      - name: Commit and push new articles
+        id: commit
         run: |
-          for id in e3npbqgs5BCMOkZZIjmigg LvKormowe477w7NEHUFACg; do
-            echo "::group::Import $id"
-            python scripts/import_wechat_scea.py "$id" || echo "::warning::Failed to import $id"
-            echo "::endgroup::"
-          done
-      - name: Commit verified article
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/news docs/public/images/news
-          if ! git diff --cached --quiet; then
-            git commit -m "Publish verified WeChat article on SCEA"
-            git push
+          if git diff --cached --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            exit 0
           fi
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: npm
-      - run: npm ci
-      - run: npm run docs:build
-      - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist
-      - uses: actions/deploy-pages@v4
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish verified WeChat articles on SCEA'
+          # Editors may have pushed while WeChat was being fetched.
+          # Abort on conflict rather than overwriting their work.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then
+              echo 'changed=false' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if git push origin HEAD:main; then
+              echo 'changed=true' >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo 'Could not push imported articles after three attempts.' >&2
+          exit 1
+
+  publish:
+    needs: import
+    if: needs.import.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # GITHUB_TOKEN pushes do not trigger push workflows. Call it explicitly.
+    uses: ./.github/workflows/deploy.yml
